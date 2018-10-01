@@ -1,9 +1,13 @@
+import sys
+
 from flask import Flask, request
 
 import receive
 import reply
 
 app = Flask(__name__)
+
+print('Python version:', sys.version)
 
 
 @app.route('/hello')
