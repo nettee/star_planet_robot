@@ -12,7 +12,7 @@ def hello():
     return 'hello'
 
 
-@app.route('/wx')
+@app.route('/wx', methods=['GET', 'POST'])
 def weixin():
     assert request.method == 'POST'
     try:
