@@ -6,7 +6,13 @@ import reply
 app = Flask(__name__)
 
 
-@app.route('/wx', methods=['POST'])
+@app.route('/hello')
+def hello():
+    print('hello')
+    return 'hello'
+
+
+@app.route('/wx')
 def weixin():
     assert request.method == 'POST'
     try:
