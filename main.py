@@ -1,10 +1,12 @@
 # -*- coding: utf-8 -*-
 # filename: main.py
 
-from flask import app, request
+from flask import Flask, request
 
 import receive
 import reply
+
+app = Flask(__name__)
 
 @app.route('/wx', methods=['POST'])
 def weixin():
