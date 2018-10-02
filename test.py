@@ -4,7 +4,7 @@ import time
 
 import requests
 
-url = 'http://127.0.0.1/wx'
+url = 'http://127.0.0.1:8000/wx'
 
 def send_message(text):
 
@@ -23,9 +23,9 @@ def send_message(text):
                           CreateTime=int(time.time()),
                           Content=text,
                           MsgId=1)
-    requests.post(url, data=msg)
+    requests.post(url, data=msg.encode('utf-8'))
 
 
 if __name__ == '__main__':
 
-    send_message('hello')
+    send_message('你好吗')

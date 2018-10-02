@@ -2,12 +2,16 @@ import sys
 
 from flask import Flask, request
 
+import chatter
 import receive
 import reply
 
 app = Flask(__name__)
 
 print('Python version:', sys.version)
+
+chatter.train()
+print('Chatter training done.')
 
 
 @app.route('/hello')
@@ -30,7 +34,8 @@ def weixin():
         fromUser = recMsg.ToUserName
         text = recMsg.Content
         print('收到文本消息: "{}"'.format(text))
-        content = "你好，谢谢你的消息！你的消息一共有{}个字".format(len(text))
+        content = chatter.get_response(text)
+        print('返回消息: "{}"'.format(content))
         replyMsg = reply.TextMsg(toUser, fromUser, content)
         return replyMsg.send()
     else:
